@@ -10,14 +10,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
+        AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
-        CommentService s1 = context.getBean(CommentService.class);
-        UserService s2 = context.getBean(UserService.class);
+        String[] beanNames = c.getBeanDefinitionNames();
+        System.out.println("등록된 빈 목록:");
+        for (String beanName : beanNames) {
+            System.out.println(beanName);
+        }
 
-        boolean b1 = s1.getCommentRepository() == s2.getCommentRepository();
-        System.out.println("s1.getCommentRepository() = " + s1.getCommentRepository());
-        System.out.println("s2.getCommentRepository() = " + s2.getCommentRepository());
-        System.out.println("b1 = " + b1);
+        System.out.println("Before retrieving the CommentService");
+        CommentService service = c.getBean(CommentService.class);
+        System.out.println("After retrieving the CommentService");
     }
 }
