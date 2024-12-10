@@ -9,11 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommentService {
 
-    @Autowired
     private CommentRepository commentRepository;
-    @Autowired
     private CommentNotificationProxy commentNotificationProxy;
 
+    @Autowired
     public CommentService(CommentRepository commentRepository, CommentNotificationProxy commentNotificationProxy) {
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
