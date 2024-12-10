@@ -9,24 +9,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
 
-//        DBCommentRepository commentRepository = new DBCommentRepository();
-//        EmailCommentNotificationProxy commentNotificationProxy = new EmailCommentNotificationProxy();
-//
-//        CommentService commentService = new CommentService(commentRepository, commentNotificationProxy);
-//
-//        Comment comment = new Comment();
-//        comment.setAuthor("Kim");
-//        comment.setText("Hello");
-//
-//        commentService.publishComment(comment);
-
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
-        Comment comment = new Comment();
-        comment.setAuthor("Kim");
-        comment.setText("Hello");
+        CommentService cs1 = context.getBean("commentService", CommentService.class);
+        CommentService cs2 = context.getBean("commentService", CommentService.class);
 
-        CommentService commentService = context.getBean(CommentService.class);
-        commentService.publishComment(comment);
+        boolean b1 = cs1 == cs2;
+        System.out.println("b1 = " + b1);
     }
 }

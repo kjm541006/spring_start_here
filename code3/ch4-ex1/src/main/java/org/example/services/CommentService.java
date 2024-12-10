@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
 
-    private CommentRepository commentRepository;
-    private CommentNotificationProxy commentNotificationProxy;
-
-    @Autowired
-    public CommentService(CommentRepository commentRepository, @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy) {
-        this.commentRepository = commentRepository;
-        this.commentNotificationProxy = commentNotificationProxy;
-    }
-
-    public void publishComment(Comment comment){
-        commentRepository.storeComment(comment);
-        commentNotificationProxy.send(comment);
-    }
+//    private CommentRepository commentRepository;
+//    private CommentNotificationProxy commentNotificationProxy;
+//
+//    @Autowired
+//    public CommentService(CommentRepository commentRepository, @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy) {
+//        this.commentRepository = commentRepository;
+//        this.commentNotificationProxy = commentNotificationProxy;
+//    }
+//
+//    public void publishComment(Comment comment){
+//        commentRepository.storeComment(comment);
+//        commentNotificationProxy.send(comment);
+//    }
 }
