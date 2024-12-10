@@ -1,9 +1,19 @@
 package org.example.beans;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Person {
 
-    private String name;
-    private Parrot parrot;
+    private String name = "Ella";
+    private final Parrot parrot;
+
+    @Autowired
+    public Person(@Qualifier("parrot2") Parrot parrot) {
+        this.parrot = parrot;
+    }
 
     public String getName() {
         return name;
@@ -17,7 +27,7 @@ public class Person {
         return parrot;
     }
 
-    public void setParrot(Parrot parrot) {
-        this.parrot = parrot;
-    }
+//    public void setParrot(Parrot parrot) {
+//        this.parrot = parrot;
+//    }
 }
