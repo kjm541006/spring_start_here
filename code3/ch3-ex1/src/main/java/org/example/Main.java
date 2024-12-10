@@ -1,13 +1,16 @@
 package org.example;
 
+import org.example.beans.Parrot;
+import org.example.beans.Person;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+
         Person p = context.getBean(Person.class);
 
-        System.out.println("p.getName() = " + p.getName());
-        System.out.println("p.getParrot() = " + p.getParrot());
+        System.out.println("Person's name: " + p.getName());
+        System.out.println("Person's parrot: " + p.getParrot());
     }
 }
