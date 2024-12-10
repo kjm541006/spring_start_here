@@ -5,10 +5,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        Person p = context.getBean(Person.class);
 
-        Person person = context.getBean(Person.class);
-
-        System.out.println("person.getName() = " + person.getName());
-        System.out.println("person.getParrot() = " + person.getParrot());
+        System.out.println("p.getName() = " + p.getName());
+        System.out.println("p.getParrot() = " + p.getParrot());
     }
 }
