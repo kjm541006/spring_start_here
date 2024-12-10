@@ -4,19 +4,29 @@ import org.example.model.Comment;
 import org.example.proxies.EmailCommentNotificationProxy;
 import org.example.repositories.DBCommentRepository;
 import org.example.services.CommentService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
 
-        DBCommentRepository commentRepository = new DBCommentRepository();
-        EmailCommentNotificationProxy commentNotificationProxy = new EmailCommentNotificationProxy();
+//        DBCommentRepository commentRepository = new DBCommentRepository();
+//        EmailCommentNotificationProxy commentNotificationProxy = new EmailCommentNotificationProxy();
+//
+//        CommentService commentService = new CommentService(commentRepository, commentNotificationProxy);
+//
+//        Comment comment = new Comment();
+//        comment.setAuthor("Kim");
+//        comment.setText("Hello");
+//
+//        commentService.publishComment(comment);
 
-        CommentService commentService = new CommentService(commentRepository, commentNotificationProxy);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
         Comment comment = new Comment();
         comment.setAuthor("Kim");
         comment.setText("Hello");
 
+        CommentService commentService = context.getBean(CommentService.class);
         commentService.publishComment(comment);
     }
 }
