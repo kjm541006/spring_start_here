@@ -12,13 +12,13 @@ public class Main {
 
         AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
-        CommentService commentService1 = c.getBean("commentService", CommentService.class);
-        CommentService commentService2 = c.getBean("commentService", CommentService.class);
+        CommentService commentService = c.getBean(CommentService.class);
+        UserService userService = c.getBean(UserService.class);
 
-        System.out.println("commentService1 = " + commentService1);
-        System.out.println("commentService2 = " + commentService2);
+        System.out.println("commentService = " + commentService);
+        System.out.println("userService = " + userService);
 
-        boolean b1 = commentService1 == commentService2;
+        boolean b1 = commentService.getCommentRepository() == userService.getCommentRepository();
         System.out.println("b1 = " + b1); // false
     }
 }

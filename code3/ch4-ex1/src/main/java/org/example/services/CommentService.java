@@ -12,18 +12,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
 
-    public CommentService(){
-        System.out.println("CommentService instance created");
+//    public CommentService(){
+//        System.out.println("CommentService instance created");
+//    }
+
+    private final CommentRepository commentRepository;
+
+    @Autowired
+    public CommentService(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
     }
 
-//    private final CommentRepository commentRepository;
-//
-//    @Autowired
-//    public CommentService(CommentRepository commentRepository) {
-//        this.commentRepository = commentRepository;
-//    }
-//
-//    public CommentRepository getCommentRepository() {
-//        return commentRepository;
-//    }
+    public CommentRepository getCommentRepository() {
+        return commentRepository;
+    }
 }
