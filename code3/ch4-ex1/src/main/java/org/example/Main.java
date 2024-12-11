@@ -12,14 +12,13 @@ public class Main {
 
         AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
-        String[] beanNames = c.getBeanDefinitionNames();
-        System.out.println("등록된 빈 목록:");
-        for (String beanName : beanNames) {
-            System.out.println(beanName);
-        }
+        CommentService commentService1 = c.getBean("commentService", CommentService.class);
+        CommentService commentService2 = c.getBean("commentService", CommentService.class);
 
-        System.out.println("Before retrieving the CommentService");
-        CommentService service = c.getBean(CommentService.class);
-        System.out.println("After retrieving the CommentService");
+        System.out.println("commentService1 = " + commentService1);
+        System.out.println("commentService2 = " + commentService2);
+
+        boolean b1 = commentService1 == commentService2;
+        System.out.println("b1 = " + b1); // false
     }
 }
