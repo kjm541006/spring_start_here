@@ -31,11 +31,8 @@ public class ProductController {
 
     // @RequestMapping(path = "/products", method = RequestMethod.POST)
     @PostMapping("/products")
-    public String addProduct(Model model, @RequestParam String name, double price){
+    public String addProduct(Model model, Product p){
 
-        Product p = new Product();
-        p.setName(name);
-        p.setPrice(price);
         productService.addProduct(p);
 
         List<Product> products = productService.findAll();
