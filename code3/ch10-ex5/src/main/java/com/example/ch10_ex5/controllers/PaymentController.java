@@ -19,20 +19,11 @@ public class PaymentController {
     }
 
     @PostMapping("/payment")
-    public ResponseEntity<?> makePayment(){
-        try{
-            PaymentDetails paymentDetails = paymentService.processPayment();
+    public ResponseEntity<PaymentDetails> makePayment(){
+        PaymentDetails paymentDetails = paymentService.processPayment();
 
-            return ResponseEntity
-                    .status(HttpStatus.ACCEPTED)
-                    .body(paymentDetails);
-
-        }catch(NotEnoughMoneyException e){
-            ErrorDetails errorDetails = new ErrorDetails();
-
-            return ResponseEntity
-                    .badRequest()
-                    .body(errorDetails);
-        }
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(paymentDetails);
     }
 }
